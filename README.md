@@ -188,3 +188,31 @@ call `/travel/actuator/metrics/http.server.requests?tag=status:404`
 For 
 -   Total number of requests resulted in a 5xx response
 - call `/travel/actuator/metrics/http.server.requests?tag=status:500`
+### Docker
+
+In terminal run
+`./gradlew clean build`
+
+then `docker compose up`
+
+it will tunnel port 8080
+
+### calling endpoint
+
+```bash
+curl --location --request GET 'http://localhost:8080/travel/locations' \
+--header 'Accept-Language: NL' \
+--header 'Authorization: Basic c29tZXVzZXI6cHN3'
+```
+
+
+```bash
+curl --location --request GET 'http://localhost:8080/travel/locations/city/AMS' \
+--header 'Accept-Language: NL' \
+--header 'Authorization: Basic c29tZXVzZXI6cHN3'
+```
+
+```bash
+curl --location --request GET 'http://localhost:8080/travel/actuator/metrics/http.server.requests' \
+--header 'Authorization: Basic b3BzOnBzdw=='
+```
