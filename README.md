@@ -168,7 +168,12 @@ ambition :-). Good luck!
 M Biancalani
 ----
 
+### inheritance
 
+For the airports, cities and countries I used inheritance SINGLE table strategy. Spring works quite well, 
+but Java Lists are not contro-variant. For example Location <- Country but it's not true List<Location> <- List<Country>
+
+As work-around I added a fake method i LocationRepository
 
 ### Actuator task
 
@@ -216,3 +221,9 @@ curl --location --request GET 'http://localhost:8080/travel/locations/city/AMS' 
 curl --location --request GET 'http://localhost:8080/travel/actuator/metrics/http.server.requests' \
 --header 'Authorization: Basic b3BzOnBzdw=='
 ```
+
+### TODO
+- Increase the test coverage
+- Add/Check endpoint validation
+- Add more logs so better testing of tracking (even though it's working see Slf4jMDCFilter)
+- Add filter to location so Http client can be smarter
